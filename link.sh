@@ -6,6 +6,6 @@ do
 	[[ "$f" == ".DS_Store" ]] && continue
 
 	echo "$f"
-	ln -s ./"$f" ~/"$f"
+	ln -siv ./"$f" ~/"$f"
 
 done
