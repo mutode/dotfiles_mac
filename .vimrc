@@ -30,7 +30,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'osyo-manga/vim-marching'
 
 NeoBundle 'Rip-Rip/clang_complete', {
-			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
+			\ 'autoload' : {'filetypes' : ['cpp']}
 			\ }
 
 " 非同期のためのvimproc
@@ -117,7 +117,8 @@ set noruler
 set list
 " どの文字でタブや改行を表示するかを設定
 " tab:タブ, trail:行末空白, eol:改行, extends:折り返し
-set listchars=tab:»•,trail:•,eol:↲,extends:»
+set listchars=tab:»_,trail:•,eol:↲,extends:»
+" set listchars=tab:»•,trail:•,eol:↲,extends:»
 " 長い行を折り返して表示 (nowrap:折り返さない)
 set wrap
 " 常にステータス行を表示 (詳細は:he laststatus)
@@ -140,6 +141,8 @@ set imsearch=-1
 set nohlsearch
 " cursorline 行の強調表示
 set cursorline 
+" クリップボードにヤンクで反映されるように
+set clipboard=unnamed,autoselect
 " 改行時に自動コメントアウトを行わない
 " こっちで定義しても意味がなさそう
 " (ftpluginのほうに書かないと反映されない)
@@ -310,7 +313,7 @@ endfunction
 "-------------------------
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 let g:quickrun_config.cpp={
-			\ 'command': 'g++',
+			\ 'command': 'clang',
 			\ 'cmdopt': '-std=c++11',
 			\}
 
@@ -322,7 +325,9 @@ let g:clang_complete_auto=1
 let g:clang_periodic_quickfix=1
 let g:clang_complete_copen=1
 let g:clan_use_library=1
+" let g:clang_library_path="/usr/local/Cellar/gcc/5.2.0/lib/gcc/5/"
 let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+
 let g:clang_user_options = '-std=c++11'
 
 "-------------------------
