@@ -1,5 +1,10 @@
 scriptencoding utf-8
 
+" 気になるところ
+"	omnisharpの初回インストール時のxbuildがうまく行ってなさそう
+"	
+
+
 " 最後にローカル用の設定があった場合はそちらを読み込む
 if filereadable(expand('~/.vimrc_path_local'))
 	source ~/.vimrc_path_local
@@ -29,12 +34,42 @@ NeoBundle 'Shougo/neocomplete.vim'
 " c++の補完
 " NeoBundle 'osyo-manga/vim-marching'
 
-NeoBundle 'Rip-Rip/clang_complete', {
+NeoBundleLazy 'Rip-Rip/clang_complete', {
 			\ 'autoload' : {'filetypes' : ['cpp']}
 			\ }
 
+" C# 補完
+NeoBundleLazy 'OmniSharp/omnisharp-vim', {
+			\ 'autoload': { 'filetypes': ['cs', 'csi', 'csx'] },
+			\    'build': {
+			\       'mac': 'xbuild server/OmniSharp.sln',
+			\       'unix': 'xbuild server/OmniSharp.sln',
+			\     },
+			\ }
+			" \ 'autoload': { 
+			" \	'filetypes': ['cs', 'csi', 'csx']
+			" \	}
+			" \ }
+
+" C# シンタックスハイライト
+NeoBundleLazy 'OrangeT/vim-csharp', {
+			\ 'autoload': { 
+			\	'filetypes': ['cs', 'csi', 'csx']
+			\	}
+			\ }
+
+" シンタックスチェッカー
+NeoBundle 'scrooloose/syntastic'
+
+" omnisharp自動起動要
+NeoBundle 'tpope/vim-dispatch'
+
 " 非同期のためのvimproc
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+			\	'build' : {
+			\		'mac' : 'make -f make_mac.mak',
+			\	},
+			\}
 
 " vimfiler
 NeoBundle 'Shougo/vimfiler.vim'
@@ -176,11 +211,13 @@ endif
 let g:neocomplete#force_omni_input_patterns.cpp =
 			\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::' 
 
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
 
 "----------------------------
 "Unite.vim setting
