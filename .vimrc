@@ -51,6 +51,17 @@ NeoBundleLazy 'OmniSharp/omnisharp-vim', {
 			" \	}
 			" \ }
 
+" python 補完
+NeoBundleLazy 'davidhalter/jedi-vim', {
+			\ 'autoload': { 
+			\	'filetypes': ['python']
+			\	}
+			\ }
+" python sintastic
+NeoBundle 'kevinw/pyflakes'
+" python pep8 check
+NeoBundle 'nvie/vim-flake8'
+
 " C# シンタックスハイライト
 NeoBundleLazy 'OrangeT/vim-csharp', {
 			\ 'autoload': { 
@@ -443,9 +454,6 @@ call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 "-------------------------------------------
 set t_Co=256
 syntax on
-if has('win32') || has('win64')
-	colorscheme hybrid 
-endif
 
 
 "-------------------------
@@ -465,7 +473,7 @@ let g:indentLine_char = '|'
  let g:syntastic_check_on_open = 1
  let g:syntastic_check_on_wq = 0
  let g:syntastic_mode_map = { 'mode': 'active',
- 	\ 'passive_filetypes': ['cs']}
+ 	\ 'passive_filetypes': ['cs', 'python']}
 
 
  let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
