@@ -196,6 +196,8 @@ set clipboard=unnamed,autoselect
 " setlocal formatoptions-=o
 autocmd FileType * setlocal formatoptions -=ro
 
+
+
 " neocomplete setting
 let g:neocomplete#enable_at_startup = 1
 let g:acp_enableAtStartup = 0
@@ -536,7 +538,6 @@ au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:¥U
 "-------------------------------------------
 " evervim
 "-------------------------------------------
-let g:evervim_devtoken='S=s213:U=15a04b4:E=152c4b91e13:C=14b6d07f120:P=1cd:A=en-devtoken:V=2:H=d2baa5d6ce45cd3fb8f474ea06bb824d'
 nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
 nnoremap <silent> ,eT :<C-u>EvervimListTags<CR>
 nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
