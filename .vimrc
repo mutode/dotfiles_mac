@@ -188,7 +188,7 @@ set nohlsearch
 " cursorline 行の強調表示
 set cursorline 
 " クリップボードにヤンクで反映されるように
-set clipboard=unnamed,autoselect
+set clipboard=unnamed
 " 改行時に自動コメントアウトを行わない
 " こっちで定義しても意味がなさそう
 " (ftpluginのほうに書かないと反映されない)
@@ -372,7 +372,7 @@ let g:quickrun_config.cpp={
 "-------------------------
 " let g:clang_auto_select=0
 let g:clang_complete_auto=1
-let g:clang_periodic_quickfix=1
+let g:clang_periodic_quickfix=0
 let g:clang_complete_copen=1
 let g:clan_use_library=1
 " let g:clang_library_path="/usr/local/Cellar/gcc/5.2.0/lib/gcc/5/"
@@ -475,7 +475,7 @@ let g:indentLine_char = '|'
  let g:syntastic_check_on_open = 1
  let g:syntastic_check_on_wq = 0
  let g:syntastic_mode_map = { 'mode': 'active',
- 	\ 'passive_filetypes': ['cs', 'python']}
+ 	\ 'passive_filetypes': ['cs', 'python', 'cpp']}
 
 
  let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
@@ -540,10 +540,7 @@ au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:¥U
 " evervim
 "-------------------------------------------
 nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
-nnoremap <silent> ,eT :<C-u>EvervimListTags<CR>
+nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
 nnoremap <silent> ,eb :<C-u>EvervimOpenBrowser<CR>
-nnoremap <silent> ,ec :<C-u>EvervimOpenClient<CR>
 nnoremap ,es :<C-u>EvervimSearchByQuery<SPACE>
-nnoremap <silent> ,et :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done -tag:someday<CR>
-nnoremap <silent> ,eta :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done<CR>
