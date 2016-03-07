@@ -32,10 +32,8 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 
 " c++の補完
-" NeoBundle 'osyo-manga/vim-marching'
-
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-			\ 'autoload' : {'filetypes' : ['cpp']}
+NeoBundleLazy 'justmao945/vim-clang', {
+			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
 			\ }
 
 " C# 補完
@@ -106,7 +104,7 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'tyru/open-browser.vim'
 
 " evervim for Evernote
-NeoBundle 'kakkyz81/evervim'
+NeoBundle 'yasutomo57jp/evervim'
 
 " カラーテーマ
 NeoBundle 'w0ng/vim-hybrid'
@@ -198,7 +196,9 @@ autocmd FileType * setlocal formatoptions -=ro
 
 
 
+"----------------------------
 " neocomplete setting
+"----------------------------
 let g:neocomplete#enable_at_startup = 1
 let g:acp_enableAtStartup = 0
 
@@ -207,6 +207,7 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#enable_auto_select = 0
+let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
@@ -222,9 +223,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.cpp =
-			\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::' 
-
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+			\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*' 
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -368,17 +367,46 @@ let g:quickrun_config.cpp={
 			\}
 
 "-------------------------
+" vim-clang Setting 
+"-------------------------
+let g:clang_auto = 0
+let g:clang_c_completeopt = 'menuone'
+let g:clang_cpp_completeopt = 'menuone'
+
+if executable('clang-3.6')
+	let g:clang_exec = 'clang-3.6'
+elseif executable('clang-3.5')
+	let g:clang_exec = 'clang-3.5'
+elseif executable('clang-3.4')
+	let g:clang_exec = 'clang-3.4'
+else
+	let g:clang_exec = 'clang'
+endif
+
+if executable('clang-format-3.6')
+	let g:clang_format_exec = 'clang-format-3.6'
+elseif executable('clang-format-3.5')
+	let g:clang_format_exec = 'clang-format-3.5'
+elseif executable('clang-format-3.4')
+	let g:clang_format_exec = 'clang-format-3.4'
+else
+	let g:clang_format_exec = 'clang-format'
+endif
+
+let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
+
+"-------------------------
 " clang_complete Setting 
 "-------------------------
 " let g:clang_auto_select=0
-let g:clang_complete_auto=1
-let g:clang_periodic_quickfix=0
-let g:clang_complete_copen=1
-let g:clan_use_library=1
-" let g:clang_library_path="/usr/local/Cellar/gcc/5.2.0/lib/gcc/5/"
-let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
-
-let g:clang_user_options = '-std=c++11'
+" let g:clang_complete_auto=1
+" let g:clang_periodic_quickfix=0
+" let g:clang_complete_copen=1
+" let g:clan_use_library=1
+" let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+"
+" let g:clang_user_options = '-std=c++11'
 
 "-------------------------
 " marching Setting 
