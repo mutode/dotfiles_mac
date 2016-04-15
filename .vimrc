@@ -108,6 +108,7 @@ NeoBundle 'yasutomo57jp/evervim'
 
 " カラーテーマ
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'jpo/vim-railscasts-theme'
 
 " エラー部分ハイライト
@@ -192,6 +193,7 @@ set clipboard=unnamed
 " (ftpluginのほうに書かないと反映されない)
 " setlocal formatoptions-=r
 " setlocal formatoptions-=o
+colorscheme lucius
 autocmd FileType * setlocal formatoptions -=ro
 
 
