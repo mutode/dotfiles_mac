@@ -186,6 +186,7 @@ set imsearch=-1
 set nohlsearch
 " cursorline 行の強調表示
 set cursorline 
+set timeout timeoutlen=1000 ttimeoutlen=50
 " クリップボードにヤンクで反映されるように
 set clipboard=unnamed
 " 改行時に自動コメントアウトを行わない

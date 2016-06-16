@@ -4,6 +4,8 @@ compinit
 
 #vimをis_luaに変更
 export PATH=/bin:/usr/local/bin:/usr/bin:/usr/sbin
+#gitをbrew gitに変更
+export PATH="/usr/local/Cellar/git/2.9.0/bin:$PATH"
 
 #-----------------
 # Setting
