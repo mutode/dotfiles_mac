@@ -6,6 +6,7 @@ compinit
 export PATH=/bin:/usr/local/bin:/usr/bin:/usr/sbin
 #gitをbrew gitに変更
 export PATH="/usr/local/Cellar/git/2.9.0/bin:$PATH"
+export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
 
 #-----------------
 # Setting
