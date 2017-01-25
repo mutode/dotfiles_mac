@@ -60,8 +60,8 @@ esac
 #コマンド履歴
 #-----------------
 HISTFILE=~/.zsh_history
-HISTSIZE=6000000
-SAVEHIST=6000000
+HISTSIZE=60000
+SAVEHIST=60000
 setopt hist_ignore_dups
 setopt share_history
 
@@ -145,15 +145,15 @@ tmux_automatically_attach_session
 #cocos2dx setting
 #-----------------
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/Applications/cocos2dx/cocos2d-x-3.3/tools/cocos2d-console/bin
+export COCOS_CONSOLE_ROOT=/Applications/cocos2dx/cocos2d-x-3.12/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
 # Add environment variable COCOS_X_ROOT for cocos2d-x
-export COCOS_X_ROOT=/Applications/cocos2dx/cocos2d-x-3.3
+export COCOS_X_ROOT=/Applications/cocos2dx
 export PATH=$COCOS_X_ROOT:$PATH
 
 # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/Applications/cocos2dx/cocos2d-x-3.3/templates
+export COCOS_TEMPLATES_ROOT=/Applications/cocos2dx/cocos2d-x-3.12/templates
 export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable NDK_ROOT for cocos2d-x
@@ -168,8 +168,17 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 # Add environment variable ANT_ROOT for cocos2d-x
 export ANT_ROOT=/usr/local/Cellar/ant/1.9.4/libexec/bin
 export PATH=$ANT_ROOT:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 #-----------------
 # neovim
 #-----------------
 export XDG_CONFIG_HOME=~/.config
+
+
+#-----------------
+# golang 
+#-----------------
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/programing/golang
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

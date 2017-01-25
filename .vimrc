@@ -36,6 +36,11 @@ NeoBundleLazy 'justmao945/vim-clang', {
 			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
 			\ }
 
+" go
+NeoBundleLazy 'fatih/vim-go', {
+			\ 'autoload' : {'filetypes' : ['go']}
+			\ }
+
 " C# 補完
 NeoBundleLazy 'OmniSharp/omnisharp-vim', {
 			\ 'autoload': { 'filetypes': ['cs', 'csi', 'csx'] },
@@ -56,9 +61,17 @@ NeoBundleLazy 'davidhalter/jedi-vim', {
 			\	}
 			\ }
 " python sintastic
-NeoBundle 'kevinw/pyflakes'
+NeoBundleLazy 'kevinw/pyflakes', {
+			\ 'autoload': {
+			\	'filetypes': ['cs', 'cpp', 'py']
+			\	}
+			\}
 " python pep8 check
-NeoBundle 'nvie/vim-flake8'
+NeoBundleLazy 'nvie/vim-flake8', {
+			\ 'autoload': {
+			\	'filetypes': ['py']
+			\	}
+			\}
 
 " C# シンタックスハイライト
 NeoBundleLazy 'OrangeT/vim-csharp', {
@@ -68,10 +81,18 @@ NeoBundleLazy 'OrangeT/vim-csharp', {
 			\ }
 
 " シンタックスチェッカー
-NeoBundle 'scrooloose/syntastic'
+NeoBundleLazy 'scrooloose/syntastic', {
+			\ 'autoload': { 
+			\	'filetypes': ['cs', 'cpp']
+			\	}
+			\ }
 
 " omnisharp自動起動要
-NeoBundle 'tpope/vim-dispatch'
+NeoBundleLazy 'tpope/vim-dispatch', {
+			\ 'autoload': { 
+			\	'filetypes': ['cpp']
+			\	}
+			\ }
 
 " 非同期のためのvimproc
 NeoBundle 'Shougo/vimproc.vim', {
@@ -99,12 +120,24 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'itchyny/lightline.vim'
 
 " for MarkDown
-NeoBundle 'kannokanno/previm'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'kannokanno/previm', {
+			\ 'autoload': { 
+			\	'filetypes': ['md']
+			\	}
+			\ }
+NeoBundleLazy 'plasticboy/vim-markdown', {
+			\ 'autoload': { 
+			\	'filetypes': ['md']
+			\	}
+			\ }
+NeoBundleLazy 'tyru/open-browser.vim', {
+			\ 'autoload': { 
+			\	'filetypes': ['md']
+			\	}
+			\ }
 
 " evervim for Evernote
-NeoBundle 'yasutomo57jp/evervim'
+" NeoBundle 'yasutomo57jp/evervim'
 
 " カラーテーマ
 NeoBundle 'w0ng/vim-hybrid'
@@ -184,6 +217,9 @@ set iminsert=0
 set imsearch=-1
 " 検索時ハイライトを行わないように(逆 hlsearch)
 set nohlsearch
+" 補完時にプレビューウィンドウを出さないようにする
+" (default setcompleteopt=preview,menuone)
+set completeopt=menuone
 " cursorline 行の強調表示
 set cursorline 
 set timeout timeoutlen=1000 ttimeoutlen=50
